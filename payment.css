@@ -1,0 +1,34 @@
+/* payment_styles.css */
+
+/* Center all content vertically and horizontally */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.background-blur {
+    background-image: url('background-image.jpg'); /* Replace with your background image */
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.payment-container {
+    background-color: rgba(255, 255, 255, 0.9); /* Adjust opacity as needed */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Additional styles remain unchanged */

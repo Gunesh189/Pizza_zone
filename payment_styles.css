@@ -1,0 +1,74 @@
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Container styles */
+.payment-container {
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    max-width: 400px;
+}
+
+/* Title styles */
+.title {
+    margin-bottom: 20px;
+}
+
+.title h1 {
+    font-size: 2.5rem;
+    color: #333;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Form styles */
+#payment-form {
+    margin-top: 20px;
+}
+
+/* Input styles */
+label {
+    display: block;
+    margin-top: 10px;
+    font-size: 1.1rem;
+    color: #555;
+}
+
+input[type="text"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 1rem;
+}
+
+/* Button styles */
+#pay-now-btn {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 1.2rem;
+}
+
+#pay-now-btn:hover {
+    background-color: #45a049;
+}
+
+/* Discount message styles */
+#discount-message {
+    color: #4CAF50; /* Green */
+    font-size: 1rem;
+    margin-top: 20px;
+}

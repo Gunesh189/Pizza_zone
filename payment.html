@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <link rel="stylesheet" href="payment_styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">'
+    
+</head>
+<style>
+    /* Center all content vertically and horizontally */
+    html, body {
+        height: 100%;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Card-like container style */
+    .card {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 400px; /* Adjust width as needed */
+    }
+</style>
+
+<body>
+    <div class="background-blur">
+        <div class="title">
+            <h1>Pizza&nbsp;<i class="fas fa-pizza-slice"></i>&nbsp;Zone</h1>
+        </div>
+        <div class="payment-container">
+            <h1>Payment</h1>
+
+            <!-- Card container for the payment form -->
+            <div class="card">
+                <form id="payment-form">
+                    <label for="address">Enter Your Address:</label>
+                    <input type="text" id="address" placeholder="Enter your address" required>
+                    <label for="payment-method">Select Payment Method:</label>
+                    <select id="payment-method" required>
+                        <option value="card">Credit/Debit Card</option>
+                        <option value="upi">UPI</option>
+                        <option value="cod">Cash on Delivery</option>
+                    </select>
+                    <div id="card-details">
+                        <label for="card-number">Card Number:</label>
+                        <input type="text" id="card-number" placeholder="Enter your card number" required>
+
+                        <label for="expiry-date">Expiry Date:</label>
+                        <input type="text" id="expiry-date" placeholder="MM/YY" required>
+
+                        <label for="cvv">CVV:</label>
+                        <input type="text" id="cvv" placeholder="Enter CVV" required>
+                    </div>
+                    <div id="upi-details">
+                        <label for="upi-id">UPI ID:</label>
+                        <input type="text" id="upi-id" placeholder="Enter your UPI ID" required>
+                    </div>
+                    <div id="map"></div> <!-- Map container -->
+                    <button id="pay-now-btn" type="button">Pay Now</button>
+                </form>
+            </div>
+            
+            <p id="discount-message" style="display:none;">Congratulations! You've earned a 10% discount on your next delivery.</p>
+        </div>
+    </div>
+
+   <script>
+        // Initialize the map
+        function initMap() {
+            var mapOptions = {
+                center: { lat: -34.397, lng: 150.644 }, // Default center coordinates
+                zoom: 8 // Default zoom level
+            };
+
+            var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+        }
+
+        var urlParams = new URLSearchParams(window.location.search);
+        var totalAmount = urlParams.get('total');
+        var totalAmountDisplay = document.getElementById('total-amount-display');
+        totalAmountDisplay.textContent = 'Total Amount: ' + decodeURIComponent(totalAmount);
+
+        var orderCount = 0; // Counter for orders placed
+
+        document.getElementById('pay-now-btn').addEventListener('click', function() {
+            var address = document.getElementById('address').value;
+            if (!address) {
+                alert('Please enter your address.');
+                return;
+            }
+            orderCount++; // Increment order count on payment
+            if (orderCount === 2) {
+                document.getElementById('discount-message').style.display = 'block';
+            }
+            alert('Your order is placed.');
+        });
+
+        document.getElementById('payment-method').addEventListener('change', function() {
+            var paymentMethod = this.value;
+            var cardDetails = document.getElementById('card-details');
+            var upiDetails = document.getElementById('upi-details');
+
+            if (paymentMethod === 'card') {
+                cardDetails.style.display = 'block';
+                upiDetails.style.display = 'none';
+            } else if (paymentMethod === 'upi') {
+                cardDetails.style.display = 'none';
+                upiDetails.style.display = 'block';
+            } else {
+                cardDetails.style.display = 'none';
+                upiDetails.style.display = 'none';
+            }
+        });
+    </script>
+
+
+</body>
+</html>
